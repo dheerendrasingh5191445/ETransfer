@@ -1,0 +1,12 @@
+{
+    "Title":"E-Transfer",
+    "FromEmail":"etransferniit@gmail.com",
+    "SubjectForApproval":"Approval of  Asset Reassignment",
+    "SubjectForRejection":" Cancellation of Reassigned Request ",
+    "Domain":"smtp.gmail.com",
+    "Port":587,
+    "Password":"etransferniit1",
+    "SubjectForCSOApproval" : " Asset Clearance Approved",
+    "SubjectForSupervisor" : "Request for  Asset Reassignment "
+    
+}
