@@ -1,0 +1,44 @@
+<!-- <app-header></app-header> -->
+<div class="pos-f-t fixed-top header">
+    <nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
+        <button class="navbar-toggler navbar-toggler-right" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0)">E-Transfer</a>
+        <div class="collapse navbar-collapse">
+           
+            <ul class="navbar-nav ml-auto mt-2 mt-md-0">
+                <li class="nav-item dropdown" ngbDropdown>
+                    <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                        <i class="fa fa-user"></i> Logout <b class="caret"></b>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-item" [routerLink]="['/']" (click)="onLoggedout()"><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' }} </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- <app-sidebar></app-sidebar> -->
+
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <ul class="list-group">
+       <div routerLink="/dashboard/{{session}}" [routerLinkActive]="['router-link-active']" class="list-group-item"> 
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' }}
+       </div>      
+       <div routerLink="/dashboard/globaluser"  class="list-group-item"> 
+        <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'Requests' }}
+    </div>
+    <div routerLink="/dashboard/myprofile"  class="list-group-item"> 
+    <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Profile' }}
+    </div>
+    <div routerLink="/dashboard/assetaccepted"  class="list-group-item"> 
+        <i class="fa fa-fw fa-user"></i>&nbsp;{{ 'Accepted Assets' }}
+    </div>
+    
+    </ul>
+</nav>
+<section class="main-container">
+    <router-outlet></router-outlet>
+</section>

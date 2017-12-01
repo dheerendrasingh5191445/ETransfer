@@ -1,0 +1,14 @@
+.search,.select{                         /*css applied on search functionality*/
+  border-radius: 20px;
+  margin: 0px;
+}																				/*search css ends */
+.option{
+  background-color : rgba(63, 59, 57, 0.71);
+  border-radius: 20px;
+}
+pagination-controls{											/*css applied to pagination controls*/ 
+  padding:30px;
+  font-size: 20px;
+ text-align: center;
+ position: relative;
+}                                         /*pagination css ends*/

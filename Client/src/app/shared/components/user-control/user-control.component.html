@@ -1,0 +1,90 @@
+<div *ngIf="request">
+	<!--user div starts here-->
+<div id="user" [@routerTransition]>
+    <!--main jumbotron starts here-->
+    <div class=" jumboMain jumbotron">
+        <!--inner jumbotron starts here-->
+        <div class=" jumboInner jumbotron">
+            <h3>{{employee.employeeName|titlecase}}</h3>
+            <div class=" profile">
+                <img src="http://www.elimfestival.org/wp-content/uploads/2016/08/Worker-Catered.png" alt="..."
+                    class="rounded-circle  img-thumbnail img-fluid">
+            </div>
+        </div>
+        <!--inner jumbotron ends here-->
+        <!--main data starts here-->
+        <div class="row">
+            <div class="col-xs-2 col-lg-4">
+                <!--profile card starts here-->
+                <div class="card details">
+                    <!--heading for profile card-->
+                    <div class="usertemp card-header text-white">
+                        <p class="h4 h4-responsive"> My Details</p>
+                    </div>
+                    <!--heading ends here-->
+                    <!--profile card data-->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><span class="spacing-one">Employee ID </span><span class="space">{{employee.employeeCode}}</span> </li>
+                        <li class="list-group-item"> <span class="spacing-one">Email-ID </span><span class="space">{{employee.employeeEmailId}} </span></li>
+                        <li class="list-group-item"><span class="spacing-one"> CC </span><span class="space">  {{employee.ccCode}}</span></li>
+                        <li class="list-group-item"><span class="spacing-one"> OU </span><span class="space">{{employee.ouCode}} </span></li>
+                        <li class="list-group-item"> <span class="spacing-one">PA-PSA</span> <span class="space">{{employee.paCode}}-{{employee.psaCode}}</span> </li>
+                        <li class="list-group-item"><span class="spacing-one"> Location</span> <span class="space">{{employee.paName}} {{employee.psaName}}</span></li>
+                    </ul>
+                </div>
+                <!--card details ends here-->
+            </div>
+            <!--div for profile ends here-->
+            
+            <div class=" col-xs-4 col-lg-8">
+                <!--card for request status starts here-->
+                <div class="card details">
+                    <div class="usertemp card-header text-white ">
+                        <p class="h4 h4-responsive"> My Ticket</p>
+                    </div>
+                    <!--progress card starts here-->
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="ticket-position col-md-8"> &nbsp;Ticket No. : &nbsp; &nbsp; {{request.requestId}}</div>
+                            <div class="ticket-position col-md-4 ">Status : &nbsp; &nbsp; {{request.pendingWith}}</div>
+                        </div>
+                        <hr>
+                        <div class="card-text">
+                            <h4> My Cleareance Status :</h4>
+                            <hr>
+                            <br>
+                            <br>
+                            <!--progress bar starts here-->
+                            <div class=" progress container">
+                                <ul class="progressbar" *ngIf="token==0">
+                                    <li class="active"><strong>Supervisor</strong></li>
+                                    <li><strong>CSO</strong></li>
+                                    <li> <strong>Completion</strong></li>
+                                </ul>
+                                <ul class="progressbar" *ngIf="token==1">
+                                    <li class="active"><strong>Supervisor</strong></li>
+                                    <li class="active"><strong>CSO</strong></li>
+                                    <li> <strong>Completion</strong></li>
+                                </ul>
+                                <ul *ngIf="token==2" class="progressbar">
+                                    <li class="active"><strong>Supervisor</strong></li>
+                                    <li class="active"><strong>CSO</strong></li>
+                                    <li class="active"> <strong>Completion</strong></li>
+                                </ul>
+                            </div>
+                            <!--progress bar ends here-->
+                            <br>
+                        </div>
+                        
+                        <!--request status ends here-->
+                    </div>
+                    <!-- card for request status ends here-->
+                </div>
+            </div>
+            <!--main data ends here-->
+        </div>
+        <!--main jumbotron ends here-->
+    </div>
+    <!--user ends here-->
+</div>
+</div>

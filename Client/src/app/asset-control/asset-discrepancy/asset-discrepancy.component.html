@@ -1,0 +1,46 @@
+ <div class="wrapper"  [@routerTransition]>	<!--main div-->
+	<h3 class="head text-center"> Asset Discrepancy Report </h3>	<!--Heading of table-->
+	<!--start of table-->
+    <div class="fresh-table full-color-blue full-screen-table">
+		<!--search box-->
+    	<div class="fixed-table-toolbar">
+				<div class="bars pull-right">
+						<div class="toolbar">
+						  <button id="export" class="btn btn-default" (click)="exportToExcel()">Export To Excel</button>
+						</div>
+					  </div>
+			<!-- <div class="pull-right search"><input class="form-control" type="text" placeholder="Search" [(ngModel)] = "searchTerm" (ngModelChange) = "search()"></div> -->
+    	</div>
+    	<table id="fresh-table" class="table table-responsive">	<!--main table-->
+	        <thead> <!-- Heading of discrepancy table --> 
+				<tr>
+					<th class="tab_head">Asset Code</th>
+					<th class="tab_head">Request ID</th>
+					<th class="tab_head">Employee Detail</th>
+					<th class="tab_head">SAP Current Employee Detail</th>						
+				</tr>
+        	</thead>
+        	<tbody>	<!--Body of table-->
+				<tr *ngFor="let details of  report | paginate:{ itemsPerPage:7, currentPage:p}" > <!-- Contains details of table -->
+					<td id="Asset_Code" class="tableContent">{{details.assetCode}}</td>
+					<td id="Request_ID" class="tableContent">{{details.requestId}}</td>
+					<td id="Employee_Detail" class="tableContent">{{details.repEmployeeCode}} : {{details.repEmployeeName}}</td>
+					<td id="SAP_Current_Employee_Detail" class="tableContent">{{details.sapEmployeeCode}} : {{details.sapEmployeeName}}</td>		
+				</tr>
+        	</tbody>
+		</table>	<!--main table ends-->
+		<div class="fixed-table-pagination">	<!--starting of pagination-->
+    		<div class="pull-left pagination-detail">
+        		<span class="pagination-info"></span>
+            	<span class="page-list">
+            		<span class="btn-group dropup"></span> 
+            	</span>
+        	</div>
+        	<div class="pull-right pagination">
+            	<ul class="pagination">
+                	<pagination-controls  (pageChange)="p=$event"></pagination-controls>
+            	</ul>
+        	</div>
+    	</div><!--Ending of pagination-->
+    </div>	<!--End of table-->
+</div>	<!--main div ends-->

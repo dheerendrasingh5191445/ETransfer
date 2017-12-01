@@ -1,0 +1,49 @@
+<div class="wrapper"><!--start of main project-->
+    <div class="fresh-table full-color-orange full-screen-table">
+      <div class="row fixed-table-toolbar">
+        <div class="col-lg-3 pull-left">
+          <div>
+            <input class="form-control search" type="text" placeholder="Search" [(ngModel)]="searchTerm" (ngModelChange) = "searchAsset()"></div><!--search box to filter the tABLE-->
+          </div>
+          <div class="col-lg-1 pull-left">
+          <select class="col custom-select form-control select" [(ngModel)]="noOfitem" (ngModelChange) = "search()" name="choice" id="choice">
+          <option class="option" *ngFor="let noOfitem of MyList" [ngValue]="noOfitem">{{noOfitem}}</option><!--to view no. of item in the table-->
+          </select>
+          </div>
+        </div>   
+        <table id="fresh-table" class="table table-responsive"><!--start of table-->
+          <thead><!--start of table head-->
+            <tr>                
+              <th data-field="companycode" >Company Code</th>
+              <th data-field="assetcode" >Asset Code</th>
+              <th data-field="capdate">Capitalisation Date</th>
+              <th data-field="Assetdes">Asset Description</th>
+              <th data-field="location">Location</th>
+              <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Reassign To</th> 
+            </tr>
+          </thead><!--end of table head --> 
+          <tbody> <!--start of table body -->  
+                <tr *ngFor ="let list of myassetList; let i = index" >            
+                  <td> {{list.companyCode}}</td>
+                  <td> {{list.assetCode}}</td>
+                  <td>{{list.capitalisationDate}}</td>
+                  <td>{{list.description}}</td>
+                  <td>{{list.location}}</td>
+                  <td>
+                    <input id=mysearch{{i}}  [(ngModel)] = "list.reassignedTo" (ngModelChange) = "search(list.reassignedTo)" list="emplist" />
+                      <datalist id = "emplist">
+                        <option id="list{{i}}" *ngFor="let item of searchItems">{{item}}</option>
+                      </datalist>
+                  </td>         
+                </tr>
+                <tr> 
+                  <td><button class="btn" id="generate" (click)="GenrateRequest()">GenerateRequest</button></td>
+                  </tr>
+            </tbody><!--end of table body-->
+        </table> 
+        <pagination-controls (pageChange)="p = $event"></pagination-controls><!--pagination control bAR-->
+
+  </div>
+  </div>
+  
+  

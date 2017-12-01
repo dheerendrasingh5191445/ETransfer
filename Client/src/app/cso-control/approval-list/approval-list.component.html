@@ -1,0 +1,96 @@
+<div class="wrapper"  [@routerTransition]> <!-- wrapper starts-->
+	<h4 class="head"> Pending Requests For Approval  </h4> 
+	<div class="fresh-table full-color-blue full-screen-table">	<!--fresh-table starts-->
+		<table id="fresh-table" class="table table-responsive"> <!-- table starts-->
+			<thead> <!-- table head starts-->
+					<tr > <!-- tr starts -->
+						<th class="text-center">Resquest ID</th>
+						<th class="text-center">Transferred Employee</th>
+						<th class="text-center">Supervisor </th>
+						<th class="text-center">New PA </th>
+						<th class="text-center">New PSA </th>
+						<th class="text-center">New OU </th>
+						<th class="text-center">New CC </th>
+						<th class="text-center">Date of Request</th>
+						<th class="text-center">Date of Transfer</th>
+						<th class="text-center">Request Status</th>
+						<th class="text-center">Asset Details</th>
+						<th class="text-center">Approve</th>
+					</tr> <!-- tr ends -->
+			</thead> <!-- table head ends-->
+			<tbody>	<!-- table body starts-->
+				<tr  *ngFor="let list of myReqList | paginate:{ itemsPerPage:7, currentPage:p} "> <!--tr starts-->
+						<td class="text-center">{{list.requestId}}</td>	
+						<td id ='name' class="text-center">{{list.employeeCode}}:{{list.employeeName|titlecase}}</td>
+						<td class="text-center">{{list.supervisorCode}}:{{list.supervisorName|titlecase}}</td>
+						<td class="text-center">{{list.newpacode}}</td>
+						<td class="text-center">{{list.newpsacode}}</td>
+						<td class="text-center">{{list.newOucode}}</td>
+						<td class="text-center">{{list.newCcCode}}</td>
+						<td id='datereq'class="text-center">{{list.dateOfRequest|date}}</td>
+						<td class="text-center">{{list.dateOfTransfer|date}}</td>
+						<td id='typereq'class="text-center">{{list.requestStatus}}</td>
+						<td class="text-center"><button class="btn btn-sm btn-primary mod" data-toggle="modal" data-target="#exampleModalLong" (click)="getAssetDetails(list.employeeCode)">View Asset Detail</button></td>					
+						<td class="text-center"><button  class="btn btn-primary fa fa-check updatebtn" aria-hidden="true" (click)="approveUserRequest(list)"></button></td> <!-- Button is used to transfer control to component -->
+					</tr> <!--tr ends-->
+			</tbody> <!-- table body ends-->
+		</table> <!-- table ends-->		
+		<div class="fixed-table-pagination"> <!-- fixed-table-pagination starts-->
+		  <div class="pull-left pagination-detail"> <!-- pull-left pagination-detail starts -->
+			<span class="pagination-info"></span>		
+		  </div>  <!-- pull-left pagination-detail ends -->
+		  <div class="pull-right pagination">  <!-- pull-right pagination starts-->
+				<ul class="pagination">
+					<pagination-controls class="pag-align" (pageChange)="p=$event"></pagination-controls> <!-- pagination -->
+				</ul>
+		  </div> <!-- pull-right pagination ends-->
+		</div> <!-- fixed-table-pagination ends-->
+	</div>   <!--fresh-table ends-->
+</div> <!-- wrapper ends-->
+<div class="modal " id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"> <!-- Asset List Modal  starts-->
+	<div class="modal-dialog modal-lg" role="document"> <!-- modal-dialog modal-lg starts-->
+		<div class="modal-content"> <!--modal-content starts-->
+			<div class="modal-header"> <!--modal-header starts-->
+				<h5 class="modal-title" id="exampleModalLongTitle">Asset Details</h5> <!-- Modal Title -->
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div> <!--modal-header ends-->
+			<div class="modal-body"> <!--modal-body starts-->
+				<div class="mb-5">
+					<div class="card-block">							
+						<table class="mt table table-responsive table-bordered table-hover table-definition mb-5"> <!-- Starting of Table -->
+							<thead>
+								<tr > <!-- Heading of Modal Table -->
+									<td class="text-center">Company Code</td>
+									<td class="text-center">Asset Code</td>
+									<td class="text-center">Description </td>
+									<td class="text-center">Cap_Date</td>
+									<td class="text-center">Location</td>
+									<td class="text-center">Assigned To</td> 
+									
+								</tr>
+							</thead>
+							<tbody class="modtable">
+								<tr *ngFor="let asset of myAssetDetail ">  <!-- Showing Data in table's list using iteration -->
+									<td class="text-center">{{asset.companyCode}}</td>
+									<td class="text-center">{{asset.assetCode}}</td>
+									<td class="text-center">{{asset.description | titlecase}}</td>
+									<td class="text-center">{{asset.capitalisationDate }} </td>
+									<td class="text-center">{{asset.location | titlecase}}</td>
+									<td class="text-center">{{asset.assignedTo}}:Name</td>
+									
+								</tr>
+							</tbody>
+						</table> <!-- Closing of Asset Table -->
+					
+					</div> <!-- Closing of card-block -->
+
+				</div>
+			</div> <!--modal-body ends-->
+			<div class="modal-footer"> <!-- modal-footer starts-->
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>  <!-- close button--> 
+			</div> <!-- modal-footer ends-->
+		</div> <!--modal-content ends-->
+	</div>  <!-- modal-dialog modal-lg ends-->
+</div>  <!-- Asset List Modal  ends-->

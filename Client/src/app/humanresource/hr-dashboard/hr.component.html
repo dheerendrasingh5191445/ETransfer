@@ -1,0 +1,15 @@
+   
+     <div [@routerTransition]>
+            <h2 class="text-muted">Dashboard <small></small></h2>   <!--Heading-->
+            <div class="row">
+                <!--Tab for asset list-->
+                <div routerLink="/humanresource/hr-viewrequest" class="col-xl-6 col-lg-6">
+                    <app-stat [bgClass]="'card-info'" [icon]="'fa-file'"  [label]="'View Request'" ></app-stat>
+                </div> 
+                <!--Tab for discrepancy report-->
+                <div routerLink="/humanresource/discrepancy-report" class="col-xl-6 col-lg-6">
+                    <app-stat [bgClass]="'card-info'" [icon]="'fa-file'"  [label]="'Discrepancy Report'" ></app-stat>
+                </div>  
+            </div>
+            <hr>
+        </div>

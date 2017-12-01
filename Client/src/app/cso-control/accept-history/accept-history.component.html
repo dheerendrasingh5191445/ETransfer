@@ -1,0 +1,54 @@
+<div class="wrapper"  [@routerTransition]>
+	<h4 class="head"> Requests Aproved By Me </h4>
+    <div class="fresh-table full-color-orange full-screen-table">
+
+      
+        
+        <table id="fresh-table" class="table table-responsive">
+            <thead>
+				<tr > <!-- Heading on the table -->
+					<th class="text-center">Resquest ID</th>
+          <th class="text-center">Transferred Employee</th>
+          <th class="text-center">Supervisor </th>
+					<th class="text-center">New PA </th>
+					<th class="text-center">New PSA </th>
+					<th class="text-center">New OU </th>
+					<th class="text-center">New CC </th>
+					<th class="text-center">Date of Request</th>
+					<th class="text-center">Request Status</th>
+					<th class="text-center">Approved On</th>
+				</tr>
+            </thead>
+            <tbody>
+				<tr  *ngFor="let list of myReqList | paginate:{ itemsPerPage:7, currentPage:p} ">  <!--to iterate through the request list-->
+					<td class="text-center">{{list.requestId}}</td>	
+          <td id ='name' class="text-center">{{list.employeeCode}}:{{list.employeeName|titlecase}}</td>
+          <td class="text-center">{{list.supervisorCode}}:{{list.supervisorName|titlecase}}</td>
+					<td class="text-center">{{list.newpacode}}</td>
+					<td class="text-center">{{list.newpsacode}}</td>
+					<td class="text-center">{{list.newOucode}}</td>
+					<td class="text-center">{{list.newCcCode}}</td>
+					<td id='datereq'class="text-center">{{list.dateOfRequest|date}}</td>
+					<td id='typereq'class="text-center">{{list.requestStatus}}</td>
+					<td id='datereq'class="text-center">{{list.dateOfCompletionRequest|date}}</td>					
+				</tr>
+            </tbody>
+        </table>
+        <div class="fixed-table-pagination">
+          <div class="pull-left pagination-detail">
+            <span class="pagination-info"></span>
+            <span class="page-list">
+              <span class="btn-group dropup">
+              </span> 
+            </span>
+          </div>
+          <div class="pull-right pagination">
+            <ul class="pagination">
+                <pagination-controls class="pag-align" (pageChange)="p=$event"></pagination-controls>
+            </ul>
+          </div>
+        </div>
+    </div>   
+</div>
+
+

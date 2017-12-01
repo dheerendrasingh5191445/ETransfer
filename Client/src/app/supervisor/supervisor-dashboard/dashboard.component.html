@@ -1,0 +1,30 @@
+<div [@routerTransition]><!--begin new component-->
+    <h2 class="text-muted">Dashboard <small></small></h2>
+    <div class="row"><!--these are different router link to move different functionality-->
+        <div routerLink="/supervisor/employeelist" class="col-xl-4 col-lg-6">
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-users'"  [label]="'Employee List'" ></app-stat>
+        </div>
+        <div routerLink="/supervisor/rejectedAssetlist" class="col-xl-4 col-lg-6">
+            <app-stat [bgClass]="'card-info'" [icon]="'fa-laptop'"  [label]="'Rejected Asset List'" ></app-stat>
+        </div>
+        <div routerLink="/supervisor/generatedrequest" class="col-xl-4 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa fa-pencil-square'"  [label]="'Generated Request List'"></app-stat>
+        </div>
+    </div>
+    <hr>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <ngb-carousel><!--this element is used for crousel -->
+                <ng-template ngbSlide *ngFor="let slider of sliders">
+                    <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%">
+                    <div class="carousel-caption">
+                        <h3>{{slider.label}}</h3>
+                        <p>{{slider.text}}</p>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+    </div>
+    <hr>   
+</div><!--end main component-->

@@ -1,0 +1,19 @@
+.search,.select{
+    border-radius: 20px;
+    margin: 0px;
+}
+.option{
+    background-color : rgba(63, 59, 57, 0.71);
+    border-radius: 20px;
+}
+pagination-controls{
+    padding:30px;
+    font-size: 20px;
+   text-align: center;
+   position: relative;
+  }
+  .fresh-table.full-color-orange {
+    background: #2AAEEB;
+    background: radial-gradient(ellipse at center, #216FFF 0%, #A6DBFA 100%);
+    background-size: 250% 250%;
+}

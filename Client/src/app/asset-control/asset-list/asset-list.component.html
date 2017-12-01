@@ -1,0 +1,50 @@
+<div *ngIf="showLoader">
+  <app-loader></app-loader>
+</div>
+
+<div *ngIf="List">
+   <!-- Asset List  -->
+<div class="wrapper"  [@routerTransition]>  <!--main div-->
+  <h4 class="head text-center"> Approved Assets Report  </h4>
+  <div class="fresh-table full-color-blue full-screen-table">
+   
+    <table id="fresh-table" class="table table-responsive ">
+      <thead>
+        <tr class="text-center">
+          <th>Company Code</th>
+          <th>Asset Code</th>
+          <th>Asset Description</th>
+          <th>Quantity</th>     
+          <th>Cap Date</th>
+          <th>Location</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let list of List| paginate:{ itemsPerPage:7, currentPage:p} ">          
+          <td>{{list.companyCode}}</td>
+          <td>{{list.assetCode}}</td>
+          <td>{{list.description}}</td>
+          <td>{{list.quantity}}</td>
+          <td>{{list.capitalisationDate}}</td>
+          <td>{{list.location}}</td>
+          <td>{{list.assetStatus}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="fixed-table-pagination">
+      <div class="pull-left pagination-detail">
+        <span class="pagination-info"></span>
+        <span class="page-list">
+          <span class="btn-group dropup"></span> 
+        </span>
+      </div>
+      <div class="pull-right pagination">
+        <ul class="pagination">
+          <pagination-controls class="pag-align-" (pageChange)="p=$event"></pagination-controls>
+        </ul>
+      </div>
+    </div>
+  </div>   
+</div>
+</div>

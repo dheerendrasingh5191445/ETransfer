@@ -1,0 +1,61 @@
+<div *ngIf="myPendingAssetRequest">
+<div class="wrapper"  >                     <!--START of wrapper class-->
+    <div class="fresh-table full-color-orange full-screen-table">    <!--Fresh table starts-->
+       <div class="row fixed-table-toolbar">
+        <div class="col-lg-3 pull-left">
+          <div>                                               <!--Search module starts-->
+          <input class="form-control search" type="text" placeholder="Search" [(ngModel)] = "searchTerm" (ngModelChange) = "search()"></div>
+          </div>                                               <!--Search module ends-->
+          <div class="col-lg-1 pull-left">
+          <select class="col custom-select form-control select" [(ngModel)]="noOfitem" name="choice" id="choice"  >
+          <option class="option" *ngFor="let noOfitem of MyList" [ngValue]="noOfitem">{{noOfitem}}</option>
+          </select>
+          </div>
+          <div class="col-lg-2 pull-left">
+            <div class="toolbar">                                <!--Click to see accepted requests-->
+              <button id="alertBtn" routerLink= "history" class="btn btn-default">Accepted Request</button>
+            </div>
+          </div>
+        </div>   
+      <table id="fresh-table" class="table table-responsive ">
+        <thead >                                                <!--Table head BEGINS-->
+          <tr >                                                   <!--First row BEGINS-->
+            <th class="text-color">Company Code</th>
+            <th class="text-color">Asset Code</th>
+            <th class="text-color">Capitalisation Date</th>
+            <th class="text-color">Description</th>
+            <th class="text-color">Location</th>
+            <th class="text-color">AssetOf</th>
+            <th class="text-color">Action</th>
+          </tr>                                                   <!--First row ENDS-->
+        </thead>                                                  <!--Table head ENDS-->
+        <tbody>                                                   <!--Table body BEGINS-->
+          <tr *ngFor="let notify of myPendingAssetRequest | paginate:{ itemsPerPage:7, currentPage:p}">   <!--Second row BEGINS-->
+            <td id="compCode">{{notify.companyCode}}</td>
+            <td id="assetCode">{{notify.assetCode}}</td>
+            <td id="capDate">{{notify.capitalisationDate | date}}</td>
+            <td id="description">{{notify.description}}</td>
+            <td id="location">{{notify.location}}</td>
+            <td id="employeeCode">{{notify.employeeCode}}</td>           
+            <td>
+              <button type="button" class="btn btn-md btn-success" id="accept" (click)="accept(notify)" data-toggle="tooltip" data-placement="top" title="Accept This Request">Accept</button>
+              <button type="button" class="btn btn-md btn-danger" id="reject" (click)="reject(notify)" data-toggle="tooltip" data-placement="top" title="Delete This Request">Reject</button>
+            </td>
+          </tr>                                 <!--Second row ENDS-->
+        </tbody>                                  <!--Table row ENDS-->
+      </table>                                    <!--Table ENDS-->
+      <div class="fixed-table-pagination">        <!--Pagination BEGINS-->
+        <div class="pull-left pagination-detail">
+          <span class="pagination-info"></span>
+          <span class="page-list">
+            <span class="btn-group dropup">
+              
+            </span> 
+          </span>
+        </div>
+          <pagination-controls class="pag-align" (pageChange)="p=$event"></pagination-controls> 
+      </div> <!--pagination ENDS -->
+      
+    </div> <!--fresh table ENDS -->
+  </div> <!--wrapper ENDS -->
+</div>

@@ -1,0 +1,32 @@
+.border{
+    background-color: #e0edf1 ;
+ }
+ 
+ .heading {
+    background-color:darkslategray;
+    color: whitesmoke;
+    box-shadow: 5px 5px 5px #888888 ;
+ }
+ 
+ .btn {
+     background-color: darkslategray;
+     color: white;
+ }
+ .btn:hover{
+    transform: scale(1.2);
+    box-shadow: 5px 5px 5px #888888 ;
+    background-color: darkslategray;
+  }
+  .btn:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+ label {
+    padding: 5px;
+ }
+ input[type=text]:focus {
+    border: 3px solid #405F5F ;
+ }
+ input[type=email]:focus {
+    border: 3px solid #405F5F ;
+ }

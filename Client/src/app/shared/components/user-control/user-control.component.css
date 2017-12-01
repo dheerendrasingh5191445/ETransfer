@@ -1,0 +1,149 @@
+.container
+{
+width: 100%;
+}
+/* progressbar class  */
+.progressbar{
+counter-reset: step;/* gives the step number as 1,2 and 3*/
+}
+.progressbar li
+{
+list-style-type: none;
+float: left;
+width: 33.3%;
+position: relative;
+text-align: center;
+}
+.progressbar li::before
+{
+   content:counter(step);
+   counter-increment: step;
+   width: 60px;
+   height:60px ;
+   line-height: 40px;
+   border: 1px solid #ddd;
+   display: block;
+   text-align: center;
+   margin: 0 auto 10px auto;
+   border-radius: 50%;
+   border-width: 10px;
+   background-color: #9DD9ED ;
+}
+.progressbar li::after
+{
+content: '' !important;
+position: absolute !important;
+width:100% ;
+height:10px ;
+background-color: #ddd;
+top:35px;
+left: -50%;
+z-index: -1;
+}
+.progressbar li:first-child:after
+{
+content: none;
+} 
+.progress{
+    margin-top: 5%;
+}
+/* progressbarli.active makes the active state colour  red as soon as that tasks is done */
+.progressbar li.active
+{
+   color: red;
+}
+.progressbar li.active:before
+{
+   border-color: #207831 ;
+}
+.progressbar li.active +li:after
+{
+background-color: #15AC43 ;
+}
+.jumboMain
+{
+   background-color: transparent;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   padding-left: 0px;
+   padding-right: 0px;
+}
+ .jumboInner
+{
+    background-image: url('http://wallpapercraft.net/wp-content/uploads/2016/06/Free-Wallpaper-Background-For-Desktop-1.jpg'); 
+    background-size: cover;
+    height:200px;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 5%;
+}
+ .img-thumbnail
+{
+    border-width: 4px;
+    border-color: white
+}
+ h3 ,small
+{
+    color: white;
+}
+ .profile
+{
+    width: 80px;
+    height: 80px;
+    margin-left: 500px;
+    margin-right: auto;
+    margin-bottom:auto;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+     transition: all 1s ease;
+}
+ .profile:hover 
+{
+    width: 100px;
+    height: 80px;
+}
+ .spacing-one
+{
+    width: 100px;
+}
+ .space 
+{
+    width: 200px;
+    float: right;
+}
+ h4
+ {
+    padding-top: 7%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+ }
+
+ .usertemp
+{
+    background-color:blue;        
+}
+ .ticket-position
+{
+    padding-top: 1%;
+}
+ @media (max-width: 576px)
+{
+ .col-lg-8 
+{
+    padding-top: 4%;
+}
+}
+ @media (max-width: 768px)
+{
+ .col-lg-8 
+{
+    padding-top: 4%;
+}
+}
+ #user
+{
+    
+    margin-bottom: 20px;
+}

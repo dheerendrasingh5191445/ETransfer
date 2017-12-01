@@ -1,0 +1,14 @@
+<div [@routerTransition]>
+    <h2 class="text-muted"> Dashboard <small>Asset Controller</small></h2>   <!--Heading-->
+    <div class="row">
+        <!--Tab for asset list-->
+        <div routerLink="/asset-control/asset-list" class="col-xl-6 col-lg-6">
+            <app-stat [bgClass]="'card-warning'" [icon]="'fa-book '"  [label]="'Approved Asset List'" ></app-stat>
+        </div> 
+        <!--Tab for discrepancy report-->
+        <div routerLink="/asset-control/asset-discrepancy" class="col-xl-6 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-file-excel-o '"  [label]="'Asset Discrepancy Report'" ></app-stat>
+        </div>  
+    </div>
+    <hr>
+</div>

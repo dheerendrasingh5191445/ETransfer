@@ -1,0 +1,49 @@
+<div *ngIf="requests"><!--ng if of list work only when list have value-->
+  <div class="wrapper container-fluid" [@routerTransition]><!--atart of main container -->
+    <div class="fresh-table full-color-orange full-screen-table">
+      <div class="row fixed-table-toolbar">
+        <div class="col-lg-3 pull-left">
+          <div><!--this is to filter the table-->
+            <input class="form-control search" type="text" placeholder="Search" [(ngModel)] = "searchTerm" (ngModelChange) = "search()"></div>
+          </div>
+          <div class="col-lg-1 pull-left">
+          <select class="col custom-select form-control select" [(ngModel)]="noOfitem" (ngModelChange) = "search()" name="choice" id="choice"  >
+          <option class="option" *ngFor="let noOfitem of MyList" [ngValue]="noOfitem">{{noOfitem}}</option><!--to select no. of item in table-->
+          </select>
+          </div>
+        </div>   
+        <table id="fresh-table" class="table table-responsive"><!--start of table-->
+            <thead><!--start of table head-->
+              <tr>
+                <th data-field="code">Employee ID</th>
+                <th data-field="location" >NEW PA Code</th>
+                <th data-field="oucode" >NEW PSA Code</th>
+                <th data-field="pacode">NEW OU Code</th>
+                <th data-field="psacode" >NEW CC Code</th>
+                <th data-field="scode">Supervisor Code</th>
+                <th data-field="scode">Type of request</th>
+                <th data-field="scode">Date of Transfer</th>
+                <th data-field="scode">Request Status</th>
+                <th data-field="scode">Pending With</th>
+              </tr>
+            </thead><!--close of table head-->
+            <tbody><!--class of table body-->
+                <tr *ngFor="let list of requests | paginate:{ itemsPerPage: noOfitem, currentPage:p} "><!---->
+                    <td>{{list.employeeCode}}</td>
+                    <td>{{list.newPaCode}}</td>
+                    <td>{{list.newPsaCode}}</td>
+                    <td>{{list.newOuCode}}</td>
+                    <td>{{list.newCcCode}}</td>            
+                    <td>{{list.supervisorCode}}</td>
+                    <td>{{list.typeOfRequest}}</td>
+                    <td>{{list.dateOfTransfer | date}}</td>
+                    <td>{{list.requestStatus}}</td>
+                    <td>{{list.pendingWith}}</td>
+                </tr>
+            </tbody><!--close of table body-->
+        </table><!--close of table --> 
+        <pagination-controls (pageChange)="p = $event"></pagination-controls><!--pagination control-->
+  </div>
+  </div><!--close of main container-->
+  
+  
